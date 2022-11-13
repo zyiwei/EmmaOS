@@ -16,7 +16,14 @@
 
 extern uint32_t syscall_handler(void);
 
-
+/*中断门描述符结构体*/
+struct gate_desc {
+   uint16_t    func_offset_low_word;
+   uint16_t    selector;
+   uint8_t     dcount;   //此项为双字计数字段，是门描述符中的第4字节。此项固定值，不用考虑
+   uint8_t     attribute;
+   uint16_t    func_offset_high_word;
+};
 
 // 静态函数声明,非必须
 static void make_idt_desc(struct gate_desc* p_gdesc, uint8_t attr, intr_handler function);
