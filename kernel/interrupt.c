@@ -29,7 +29,7 @@ struct gate_desc {
 static void make_idt_desc(struct gate_desc* p_gdesc, uint8_t attr, intr_handler function);
 static struct gate_desc idt[IDT_DESC_CNT];   // idt是中断描述符表,本质上就是个中断门描述符数组
 
-
+char* intr_name[IDT_DESC_CNT];		     // 用于保存异常的名字
 
 /********    定义中断处理程序数组    ********
  * 在kernel.S中定义的intrXXentry只是中断处理程序的入口,
