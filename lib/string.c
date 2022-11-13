@@ -1,5 +1,5 @@
 #include "string.h"
-//#include "global.h"
+
 #include "assert.h"
 
 /* 将dst_起始的size个字节置为value */
