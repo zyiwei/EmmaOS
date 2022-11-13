@@ -197,7 +197,7 @@ void schedule() {
    /* 击活任务页表等 */
    process_activate(next);
 
-   //switch_to(cur, next);
+   switch_to(cur, next);
 }
 
 /* 当前线程将自己阻塞,标志其状态为stat. */
