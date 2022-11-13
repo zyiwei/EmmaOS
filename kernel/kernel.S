@@ -30,7 +30,7 @@ intr%1entry:		 ; 每个中断处理程序都要压入中断向量号,所以一�
    jmp intr_exit
 
 section .data
-   dd    intr%1entry	 ; 存储各个中断入口程序的地址，形成intr_entry_table数组
+   dd    intr%1entry	 ; 存储各个中断入口程序的地址，形成intr_entry_table数组 所有地址的section都用了同一个中断名.data，编译后连续
 %endmacro
 
 section .text
