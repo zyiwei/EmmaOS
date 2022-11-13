@@ -21,10 +21,7 @@ bool bitmap_scan_test(struct bitmap* btmp, uint32_t bit_idx) {
 int bitmap_scan(struct bitmap* btmp, uint32_t cnt) {
    uint32_t idx_byte = 0;	 // 用于记录空闲位所在的字节
 /* 先逐字节比较,蛮力法 */
-   while (( 0xff == btmp->bits[idx_byte]) && (idx_byte < btmp->btmp_bytes_len)) {
-/* 1表示该位已分配,所以若为0xff,则表示该字节内已无空闲位,向下一字节继续找 */
-      idx_byte++;
-   }
+   
 
    ASSERT(idx_byte < btmp->btmp_bytes_len);
    if (idx_byte == btmp->btmp_bytes_len) {  // 若该内存池找不到可用空间		
