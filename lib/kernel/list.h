@@ -21,8 +21,7 @@ struct list {
    struct list_elem tail;
 };
 
-/* 自定义函数类型function,用于在list_traversal中做回调函数 */
-typedef bool (function)(struct list_elem*, int arg);
+
 
 void list_init (struct list*);
 void list_insert_before(struct list_elem* before, struct list_elem* elem);
