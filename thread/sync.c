@@ -75,8 +75,6 @@ void lock_release(struct lock* plock) {
    }
    ASSERT(plock->holder_repeat_nr == 1);
 
-   plock->holder = NULL;	   // 把锁的持有者置空放在V操作之前
-   plock->holder_repeat_nr = 0;
-   sema_up(&plock->semaphore);	   // 信号量的V操作,也是原子操作
+
 }
 
