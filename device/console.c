@@ -1,8 +1,7 @@
 #include "console.h"
 #include "print.h"
 #include "stdint.h"
-#include "sync.h"
-#include "thread.h"
+
 static struct lock console_lock;    // 控制台锁
 
 /* 初始化终端 */
