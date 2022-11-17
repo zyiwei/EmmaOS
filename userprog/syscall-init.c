@@ -16,10 +16,7 @@
 typedef void* syscall;
 syscall syscall_table[syscall_nr];
 
-/* 返回当前任务的pid */
-uint32_t sys_getpid(void) {
-   return running_thread()->pid;
-}
+
 
 /* 初始化系统调用 */
 void syscall_init(void) {
