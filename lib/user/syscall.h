@@ -32,7 +32,7 @@ enum SYSCALL_NR {
    SYS_WAIT,
    SYS_PIPE,
    SYS_FD_REDIRECT,
-   SYS_HELP
+   
 };
 uint32_t getpid(void);
 uint32_t write(int32_t fd, const void* buf, uint32_t count);
