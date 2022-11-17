@@ -183,4 +183,7 @@ void fd_redirect(uint32_t old_local_fd, uint32_t new_local_fd) {
    _syscall2(SYS_FD_REDIRECT, old_local_fd, new_local_fd);
 }
 
-
+/* 显示系统支持的命令 */
+void help(void) {
+   _syscall0(SYS_HELP);
+}
