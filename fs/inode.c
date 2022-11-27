@@ -142,30 +142,7 @@ void inode_close(struct inode* inode) {
    intr_set_status(old_status);
 }
 
-/* 将硬盘分区part上的inode清空 */
-void inode_delete(struct partition* part, uint32_t inode_no, void* io_buf) {
-   ASSERT(inode_no < 4096);
-   struct inode_position inode_pos;
-   inode_locate(part, inode_no, &inode_pos);     // inode位置信息会存入inode_pos
-   ASSERT(inode_pos.sec_lba <= (part->start_lba + part->sec_cnt));
-   
-   char* inode_buf = (char*)io_buf;
-   if (inode_pos.two_sec) {   // inode跨扇区,读入2个扇区
-      /* 将原硬盘上的内容先读出来 */
-      ide_read(part->my_disk, inode_pos.sec_lba, inode_buf, 2);
-      /* 将inode_buf清0 */
-      memset((inode_buf + inode_pos.off_size), 0, sizeof(struct inode));
-      /* 用清0的内存数据覆盖磁盘 */
-      ide_write(part->my_disk, inode_pos.sec_lba, inode_buf, 2);
-   } else {    // 未跨扇区,只读入1个扇区就好
-      /* 将原硬盘上的内容先读出来 */
-      ide_read(part->my_disk, inode_pos.sec_lba, inode_buf, 1);
-      /* 将inode_buf清0 */
-      memset((inode_buf + inode_pos.off_size), 0, sizeof(struct inode));
-      /* 用清0的内存数据覆盖磁盘 */
-      ide_write(part->my_disk, inode_pos.sec_lba, inode_buf, 1);
-   }
-}
+
 
 /* 回收inode的数据块和inode本身 */
 void inode_release(struct partition* part, uint32_t inode_no) {
